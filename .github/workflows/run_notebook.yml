@@ -23,6 +23,6 @@ jobs:
           pip install yfinance pandas pytz
 
       - name: Run tracker
-        run: python ETF_GL_SLV/etf.py
+        run: python etf.py
 
 
