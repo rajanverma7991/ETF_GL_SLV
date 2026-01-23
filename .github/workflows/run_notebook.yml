@@ -28,6 +28,6 @@ jobs:
           ls -la
 
       - name: Run tracker
-        run: python etf.py
+        run: python etf_2.py
 
 
