@@ -30,4 +30,13 @@ jobs:
       - name: Run tracker
         run: python etf_2.py
 
+        
+      - name: Commit result file
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add result.txt
+          git commit -m "Update ETF result" || echo "No changes"
+          git push
+
 
