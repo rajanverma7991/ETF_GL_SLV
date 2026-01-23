@@ -1,0 +1,2 @@
+# ETF_GL_SLV
+GLD SILVER ETF PRICE, runs between 9AM - 3 PM
