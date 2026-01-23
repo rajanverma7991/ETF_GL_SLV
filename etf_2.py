@@ -1,6 +1,9 @@
 import yfinance as yf
 from datetime import datetime
 import pytz
+import os
+
+
 
 symbols = {
     "Nippon Silver BeES": "SILVERBEES.NS",
@@ -47,3 +50,10 @@ with open("result.txt", "w") as f:
     f.write("\n".join(lines))
 
 print("\n".join(lines))
+
+
+#----- save output in file -----#
+os.makedirs("output", exist_ok=True)
+
+with open("output/result.txt", "w") as f:
+    f.write("\n".join(lines))
