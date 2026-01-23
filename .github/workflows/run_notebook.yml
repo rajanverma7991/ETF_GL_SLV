@@ -24,4 +24,4 @@ jobs:
 
       - name: Run tracker
         run: |
-          python bees_tracker.py
+          python ETF.ipynb
