@@ -21,6 +21,11 @@ jobs:
       - name: Install dependencies
         run: |
           pip install yfinance pandas pytz
+          
+      - name: Debug tree
+        run: |
+          pwd
+          ls -la
 
       - name: Run tracker
         run: python etf.py
