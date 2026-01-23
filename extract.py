@@ -15,7 +15,7 @@ for cell in reversed(nb['cells']):
         break
 
 # STEP 3: save to output/ folder
-with open("output/result_etf.txt", "w") as f:
+with open("output/result.txt", "w") as f:
     f.write(final_output.strip())
 
 print("Saved:", final_output)
