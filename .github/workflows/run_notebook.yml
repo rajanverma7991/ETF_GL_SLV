@@ -1,12 +1,15 @@
-name: BeES Tracker
+name: ETF Tracker Pages
 
 on:
   schedule:
-    - cron: "0 4-9 * * 1-5"   # Runs hourly 04:00–09:00 UTC (Mon–Fri)
+    - cron: "0 4-9 * * 1-5"   # hourly during market UTC window
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  run-tracker:
+  run-etf:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,25 +21,16 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
           pip install yfinance pandas pytz
-          
-      - name: Debug tree
-        run: |
-          pwd
-          ls -la
 
-      - name: Run tracker
+      - name: Run ETF tracker
         run: python etf_2.py
 
-        
-      - name: Commit result file
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add result.txt
-          git commit -m "Update ETF result" || echo "No changes"
-          git push
-
-
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./output
