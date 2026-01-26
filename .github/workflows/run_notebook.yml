@@ -2,7 +2,7 @@ name: ETF Tracker Pages
 
 on:
   schedule:
-    - cron: "*/5 * * * *"   # Hourly during NSE window (UTC)
+    - cron: "*/30 * * * *"   # Hourly during NSE window (UTC)
   workflow_dispatch:
 
 permissions:
