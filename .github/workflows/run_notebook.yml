@@ -2,7 +2,7 @@ name: ETF Tracker Pages
 
 on:
   schedule:
-    - cron: "0 4-9 * * 1-5"   # hourly during market UTC window
+    - cron: "0 4-10 * * *"   # hourly during market UTC window
   workflow_dispatch:
 
 permissions:
