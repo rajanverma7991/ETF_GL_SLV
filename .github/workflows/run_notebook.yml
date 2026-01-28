@@ -36,6 +36,14 @@ jobs:
 
       - name: Run ETF tracker
         run: python etf_2.py
+        
+      - name: Debug output folder
+        run: |
+          echo "Root folder:"
+          ls -l
+          echo "Output folder:"
+          ls -l output || echo "output folder missing"
+
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
