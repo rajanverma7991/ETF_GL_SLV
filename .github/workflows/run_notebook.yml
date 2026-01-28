@@ -6,27 +6,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
+  contents: write
 
 jobs:
-  deploy:
+  run-etf:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
@@ -36,20 +25,14 @@ jobs:
 
       - name: Run ETF tracker
         run: python etf_2.py
-        
-      - name: Debug output folder
-        run: |
-          echo "Root folder:"
-          ls -l
-          echo "Output folder:"
-          ls -l output || echo "output folder missing"
 
+      - name: Debug output
+        run: ls -l output
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Publish output to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: ./output
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./output
+          force_orphan: true
