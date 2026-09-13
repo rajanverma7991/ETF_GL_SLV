@@ -1,0 +1,11 @@
+Run Time IST: 2026-09-13 13:14
+
+Nippon Silver BeES
+Previous Close : ₹223.53
+Current Price  : ₹216.72
+Dip  : -3.05%
+
+Nippon Gold BeES
+Previous Close : ₹126.20
+Current Price  : ₹125.12
+Dip  : -0.86%
